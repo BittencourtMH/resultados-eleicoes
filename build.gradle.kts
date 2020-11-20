@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.apache.commons:commons-text:1.9")
     implementation(kotlin("stdlib"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     testImplementation("junit", "junit", "4.12")

@@ -20,6 +20,17 @@ class Controller : Initializable {
     @FXML
     lateinit var cargo: ChoiceBox<CargoPergunta>
 
+    @FXML
+    lateinit var uf: ComboBox<AbrangenciaMunicipio>
+
+    @FXML
+    lateinit var municipio: ComboBox<Municipio>
+
+    @FXML
+    lateinit var zonaEleitoral: ComboBox<String>
+
+    lateinit var municipioConfiguracao: MunicipioConfiguracao
+
     private fun configurarEleicao() {
         eleicao.converter = object : StringConverter<Eleicao>() {
             override fun toString(`object`: Eleicao?): String {
@@ -30,10 +41,14 @@ class Controller : Initializable {
                 return eleicao.items.find { it.nm == string }!!
             }
         }
-        eleicao.items = FXCollections.observableArrayList(Tse.eleicaoConfiguracao().pl[0].e)
+        val eleicaoConfiguracao = Tse.eleicaoConfiguracao()
+        eleicao.items = FXCollections.observableArrayList(eleicaoConfiguracao.pl[0].e)
         eleicao.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             cargo.items = FXCollections.observableArrayList(newValue.abr[0].cp)
             cargo.selectionModel.selectFirst()
+            municipioConfiguracao = Tse.municipioConfiguracao(eleicaoConfiguracao.c, newValue.cd)
+            uf.items = FXCollections.observableArrayList(municipioConfiguracao.abr)
+            uf.selectionModel.selectFirst()
         }
         eleicao.selectionModel.selectFirst()
     }
@@ -65,8 +80,42 @@ class Controller : Initializable {
         cargo.selectionModel.selectFirst()
     }
 
+    private fun configurarUf() {
+        uf.converter = object : StringConverter<AbrangenciaMunicipio>() {
+            override fun toString(`object`: AbrangenciaMunicipio?): String {
+                return `object`?.ds ?: ""
+            }
+
+            override fun fromString(string: String?): AbrangenciaMunicipio {
+                return municipioConfiguracao.abr.find { it.ds == string }!!
+            }
+        }
+        uf.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
+            municipio.selectionModel.clearSelection()
+            if (newValue != null) municipio.items = FXCollections.observableArrayList(newValue.mu)
+        }
+    }
+
+    private fun configurarMunicipio() {
+        municipio.converter = object : StringConverter<Municipio>() {
+            override fun toString(`object`: Municipio?): String {
+                return `object`?.nm ?: ""
+            }
+
+            override fun fromString(string: String?): Municipio {
+                return uf.value.mu.find { it.nm == string }!!
+            }
+        }
+        municipio.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
+            zonaEleitoral.selectionModel.clearSelection()
+            if (newValue != null) zonaEleitoral.items = FXCollections.observableArrayList(newValue.z)
+        }
+    }
+
     override fun initialize(location: URL?, resources: ResourceBundle?) {
         configurarCargo()
+        configurarMunicipio()
+        configurarUf()
         configurarEleicao()
         configurarTipoConsulta()
     }
