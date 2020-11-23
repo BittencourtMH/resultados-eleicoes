@@ -2,15 +2,19 @@ package controlador
 
 import java.net.*
 import java.util.*
+import javafx.beans.property.*
 import javafx.collections.*
 import javafx.fxml.*
+import javafx.scene.*
 import javafx.scene.control.*
+import javafx.stage.*
 import javafx.util.*
 import kotlin.collections.ArrayList
 import modelo.entidades.*
 import modelo.json.*
 
-class Controller : Initializable {
+
+class PrincipalController : Initializable {
     @FXML
     lateinit var eleicao: ChoiceBox<Eleicao>
 
@@ -29,7 +33,52 @@ class Controller : Initializable {
     @FXML
     lateinit var zonaEleitoral: ComboBox<String>
 
+    @FXML
+    lateinit var duracao: ChoiceBox<Int>
+
+    @FXML
+    lateinit var tableView: TableView<Consulta>
+
+    @FXML
+    lateinit var eleicaoColumn: TableColumn<Consulta, String>
+
+    @FXML
+    lateinit var tipoConsultaColumn: TableColumn<Consulta, String>
+
+    @FXML
+    lateinit var cargoColumn: TableColumn<Consulta, String>
+
+    @FXML
+    lateinit var ufColumn: TableColumn<Consulta, String>
+
+    @FXML
+    lateinit var municipioColumn: TableColumn<Consulta, String>
+
+    @FXML
+    lateinit var duracaoColumn: TableColumn<Consulta, Number>
+
     lateinit var municipioConfiguracao: MunicipioConfiguracao
+
+    @FXML
+    fun adicionar() {
+        val consulta =
+            Consulta(eleicao.value, tipoConsulta.value, cargo.value, uf.value, municipio.value, duracao.value)
+        tableView.items.add(consulta)
+    }
+
+    @FXML
+    fun apresentar() {
+        val fxmlLoader = FXMLLoader()
+        fxmlLoader.location = javaClass.getResource("/apresentacao.fxml")
+        val stage = Stage()
+        stage.scene = Scene(fxmlLoader.load())
+        fxmlLoader.getController<ApresentacaoController>().iniciar(tableView.items)
+        stage.show()
+    }
+
+    private fun configurarDuracao() {
+        duracao.items = FXCollections.observableArrayList((5..60 step 5).toList())
+    }
 
     private fun configurarEleicao() {
         eleicao.converter = object : StringConverter<Eleicao>() {
@@ -46,7 +95,7 @@ class Controller : Initializable {
         eleicao.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             cargo.items = FXCollections.observableArrayList(newValue.abr[0].cp)
             cargo.selectionModel.selectFirst()
-            municipioConfiguracao = Tse.municipioConfiguracao(eleicaoConfiguracao.c, newValue.cd)
+            municipioConfiguracao = Tse.municipioConfiguracao(newValue.cd)
             uf.items = FXCollections.observableArrayList(municipioConfiguracao.abr)
             uf.selectionModel.selectFirst()
         }
@@ -112,11 +161,22 @@ class Controller : Initializable {
         }
     }
 
+    private fun configurarTable() {
+        eleicaoColumn.setCellValueFactory { SimpleStringProperty(it.value.eleicao.nm) }
+        tipoConsultaColumn.setCellValueFactory { SimpleStringProperty(it.value.tipoConsulta.texto) }
+        cargoColumn.setCellValueFactory { SimpleStringProperty(it.value.cargo.ds) }
+        ufColumn.setCellValueFactory { SimpleStringProperty(it.value.uf.ds) }
+        municipioColumn.setCellValueFactory { SimpleStringProperty(it.value.municipio?.nm) }
+        duracaoColumn.setCellValueFactory { SimpleIntegerProperty(it.value.duracao) }
+    }
+
     override fun initialize(location: URL?, resources: ResourceBundle?) {
+        configurarDuracao()
         configurarCargo()
         configurarMunicipio()
         configurarUf()
         configurarEleicao()
         configurarTipoConsulta()
+        configurarTable()
     }
 }

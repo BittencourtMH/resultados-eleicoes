@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="8.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PrincipalController">
+   <children>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Eleição" />
+                  <ChoiceBox fx:id="eleicao" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Tipo de consulta" />
+                  <ChoiceBox fx:id="tipoConsulta" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Cargo" />
+                  <ChoiceBox fx:id="cargo" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="UF" />
+                  <ComboBox fx:id="uf" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Município" />
+                  <ComboBox fx:id="municipio" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Zona Eleitoral" />
+                  <ComboBox fx:id="zonaEleitoral" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label text="Duração (s)" />
+                  <ChoiceBox fx:id="duracao" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+      <HBox spacing="8.0">
+         <children>
+            <Button onAction="#adicionar" text="Adicionar" />
+            <Button onAction="#apresentar" text="Apresentar" />
+         </children>
+      </HBox>
+      <TableView fx:id="tableView">
+        <columns>
+          <TableColumn fx:id="eleicaoColumn" text="Eleição" />
+          <TableColumn fx:id="tipoConsultaColumn" text="Tipo de consulta" />
+            <TableColumn fx:id="cargoColumn" text="Cargo" />
+            <TableColumn fx:id="ufColumn" text="UF" />
+            <TableColumn fx:id="municipioColumn" text="Município" />
+            <TableColumn fx:id="duracaoColumn" text="Duração (s)" />
+        </columns>
+      </TableView>
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</VBox>

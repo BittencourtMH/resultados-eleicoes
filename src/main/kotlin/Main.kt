@@ -6,7 +6,7 @@ import javafx.stage.*
 class Main : Application() {
     @Throws(Exception::class)
     override fun start(primaryStage: Stage) {
-        val root = FXMLLoader.load<Parent>(javaClass.getResource("sample.fxml"))
+        val root = FXMLLoader.load<Parent>(javaClass.getResource("principal.fxml"))
         primaryStage.title = "Resultados Eleições"
         primaryStage.scene = Scene(root)
         primaryStage.show()

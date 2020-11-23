@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<FlowPane hgap="8.0" vgap="8.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ApresentacaoController">
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+   <children>
+      <HBox spacing="8.0">
+         <children>
+            <Label text="Eleição">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="eleicao" />
+         </children>
+      </HBox>
+      <HBox layoutX="26.0" layoutY="26.0" spacing="8.0">
+         <children>
+            <Label text="Tipo de consulta">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="tipoConsulta" />
+         </children>
+      </HBox>
+      <HBox layoutX="95.0" layoutY="26.0" spacing="8.0">
+         <children>
+            <Label text="Cargo">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="cargo" />
+         </children>
+      </HBox>
+      <HBox layoutX="233.0" layoutY="26.0" spacing="8.0">
+         <children>
+            <Label text="UF">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="uf" />
+         </children>
+      </HBox>
+      <HBox layoutX="292.0" layoutY="26.0" spacing="8.0">
+         <children>
+            <Label text="Município">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="municipio" />
+         </children>
+      </HBox>
+   </children>
+</FlowPane>
