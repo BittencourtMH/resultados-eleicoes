@@ -28,9 +28,15 @@ class Tse {
         fun resultadoVariavel(consulta: Consulta): ResultadoVariavel {
             val uf = consulta.uf.cd.toLowerCase()
             val cargo = consulta.cargo.cd.padStart(4, '0')
-            val arquivo = "$uf${consulta.municipio?.cd}-c$cargo-e${consulta.eleicao.cd.padStart(6, '0')}-v.json"
+            val arquivo = "$uf${consulta.municipio?.cd ?: ""}-c$cargo-e${consulta.eleicao.cd.padStart(6, '0')}-v.json"
             val url = "$HOST/$ciclo/divulgacao/$AMBIENTE/${consulta.eleicao.cd}/dados/$uf/$arquivo"
             return obter(url, ResultadoVariavel.serializer())
+        }
+
+        fun resultadoFixo(consulta: Consulta, arquivo: String): ResultadoFixo {
+            val uf = consulta.uf.cd.toLowerCase()
+            val url = "$HOST/$ciclo/divulgacao/$AMBIENTE/${consulta.eleicao.cd}/dados/$uf/$arquivo.json"
+            return obter(url, ResultadoFixo.serializer())
         }
 
         private fun <T> obter(url: String, strategy: DeserializationStrategy<T>): T {

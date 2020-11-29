@@ -13,7 +13,6 @@ import kotlin.collections.ArrayList
 import modelo.entidades.*
 import modelo.json.*
 
-
 class PrincipalController : Initializable {
     @FXML
     lateinit var eleicao: ChoiceBox<Eleicao>
@@ -31,7 +30,7 @@ class PrincipalController : Initializable {
     lateinit var municipio: ComboBox<Municipio>
 
     @FXML
-    lateinit var zonaEleitoral: ComboBox<String>
+    lateinit var zona: ComboBox<String>
 
     @FXML
     lateinit var duracao: ChoiceBox<Int>
@@ -55,14 +54,20 @@ class PrincipalController : Initializable {
     lateinit var municipioColumn: TableColumn<Consulta, String>
 
     @FXML
+    lateinit var zonaColumn: TableColumn<Consulta, String>
+
+    @FXML
     lateinit var duracaoColumn: TableColumn<Consulta, Number>
 
     lateinit var municipioConfiguracao: MunicipioConfiguracao
 
     @FXML
     fun adicionar() {
-        val consulta =
-            Consulta(eleicao.value, tipoConsulta.value, cargo.value, uf.value, municipio.value, duracao.value)
+        val eleicao = eleicao.value
+        val tipoConsulta = tipoConsulta.value
+        val cargo = cargo.value
+        val uf = uf.value
+        val consulta = Consulta(eleicao, tipoConsulta, cargo, uf, municipio.value, zona.value, duracao.value)
         tableView.items.add(consulta)
     }
 
@@ -78,6 +83,7 @@ class PrincipalController : Initializable {
 
     private fun configurarDuracao() {
         duracao.items = FXCollections.observableArrayList((5..60 step 5).toList())
+        duracao.selectionModel.selectFirst()
     }
 
     private fun configurarEleicao() {
@@ -90,8 +96,7 @@ class PrincipalController : Initializable {
                 return eleicao.items.find { it.nm == string }!!
             }
         }
-        val eleicaoConfiguracao = Tse.eleicaoConfiguracao()
-        eleicao.items = FXCollections.observableArrayList(eleicaoConfiguracao.pl[0].e)
+        Tse.eleicaoConfiguracao().pl.forEach { eleicao.items.addAll(it.e) }
         eleicao.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             cargo.items = FXCollections.observableArrayList(newValue.abr[0].cp)
             cargo.selectionModel.selectFirst()
@@ -156,8 +161,8 @@ class PrincipalController : Initializable {
             }
         }
         municipio.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
-            zonaEleitoral.selectionModel.clearSelection()
-            if (newValue != null) zonaEleitoral.items = FXCollections.observableArrayList(newValue.z)
+            zona.selectionModel.clearSelection()
+            if (newValue != null) zona.items = FXCollections.observableArrayList(newValue.z!!.sorted())
         }
     }
 
@@ -168,6 +173,7 @@ class PrincipalController : Initializable {
         ufColumn.setCellValueFactory { SimpleStringProperty(it.value.uf.ds) }
         municipioColumn.setCellValueFactory { SimpleStringProperty(it.value.municipio?.nm) }
         duracaoColumn.setCellValueFactory { SimpleIntegerProperty(it.value.duracao) }
+        zonaColumn.setCellValueFactory { SimpleStringProperty(it.value.zona) }
     }
 
     override fun initialize(location: URL?, resources: ResourceBundle?) {

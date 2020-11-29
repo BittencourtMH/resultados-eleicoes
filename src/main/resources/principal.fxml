@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="8.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PrincipalController">
+<VBox spacing="8.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PrincipalController">
    <children>
       <FlowPane hgap="8.0" vgap="8.0">
          <children>
@@ -47,8 +47,8 @@
             </VBox>
             <VBox spacing="4.0">
                <children>
-                  <Label text="Zona Eleitoral" />
-                  <ComboBox fx:id="zonaEleitoral" />
+                  <Label text="Zona" />
+                  <ComboBox fx:id="zona" />
                </children>
             </VBox>
             <VBox spacing="4.0">
@@ -72,6 +72,7 @@
             <TableColumn fx:id="cargoColumn" text="Cargo" />
             <TableColumn fx:id="ufColumn" text="UF" />
             <TableColumn fx:id="municipioColumn" text="Município" />
+            <TableColumn fx:id="zonaColumn" text="Zona" />
             <TableColumn fx:id="duracaoColumn" text="Duração (s)" />
         </columns>
       </TableView>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="tableView" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controlador.RespostaController">
+  <columns>
+    <TableColumn fx:id="ordem" text="Ordem" />
+    <TableColumn fx:id="resposta" text="Resposta" />
+      <TableColumn fx:id="votos" text="Votos" />
+      <TableColumn fx:id="situacao" text="Situação" />
+  </columns>
+</TableView>

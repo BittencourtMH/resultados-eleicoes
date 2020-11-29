@@ -39,7 +39,7 @@ data class AbrangenciaVariavel(
     val tv: String,
     val vvc: String,
     val pvvc: String,
-    val vscv: String,
+    val vscv: String? = null,
     val vb: String,
     val pvb: String,
     val tvn: String,
@@ -58,10 +58,10 @@ data class AbrangenciaVariavel(
     val pvan: String,
     val vansj: String,
     val pvansj: String,
-    val vnom: String,
-    val pvnom: String,
+    val vnom: String? = null,
+    val pvnom: String? = null,
     val colig: List<Coligacao>? = null,
     val part: List<Partido>? = null,
-    val cand: List<Candidato>,
-    val resp: List<Candidato>? = null
+    val cand: List<CandidatoResposta>? = null,
+    val resp: List<CandidatoResposta>? = null
 )

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="tableView" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CandidatoController">
+  <columns>
+    <TableColumn fx:id="ordem" text="Ordem" />
+    <TableColumn fx:id="candidato" text="Candidato" />
+      <TableColumn fx:id="partido" text="Partido" />
+      <TableColumn fx:id="votos" text="Votos" />
+      <TableColumn fx:id="situacao" text="Situação" />
+  </columns>
+</TableView>

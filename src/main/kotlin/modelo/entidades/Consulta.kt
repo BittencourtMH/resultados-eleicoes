@@ -8,6 +8,7 @@ data class Consulta(
     val cargo: CargoPergunta,
     val uf: AbrangenciaMunicipio,
     val municipio: Municipio? = null,
+    val zona: String? = null,
     val duracao: Int,
     var resultado: Resultado? = null
 )

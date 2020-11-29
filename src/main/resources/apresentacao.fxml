@@ -4,63 +4,184 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<FlowPane hgap="8.0" vgap="8.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ApresentacaoController">
+<VBox spacing="8.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.ApresentacaoController">
+   <children>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Eleição">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="eleicao" />
+               </children>
+            </HBox>
+            <HBox layoutX="26.0" layoutY="26.0" spacing="8.0">
+               <children>
+                  <Label text="Tipo de consulta">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tipoConsulta" />
+               </children>
+            </HBox>
+            <HBox layoutX="95.0" layoutY="26.0" spacing="8.0">
+               <children>
+                  <Label text="Cargo">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cargo" />
+               </children>
+            </HBox>
+            <HBox layoutX="233.0" layoutY="26.0" spacing="8.0">
+               <children>
+                  <Label text="Abrangência">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="abrangencia" />
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Seções">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secoesLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Totalizadas">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secoesTotalizadasLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Não totalizadas">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secoesNaoTotalizadasLabel" />
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Eleitores">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="eleitoresLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Apurados">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="eleitoresApuradosLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Não apurados">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="eleitoresNaoApuradosLabel" />
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Comparecimento">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="comparecimentoLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Abstenção">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="abstencaoLabel" />
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+      <FlowPane hgap="8.0" vgap="8.0">
+         <children>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Votos a concorrentes">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="concorrentesLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Brancos">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="brancosLabel" />
+               </children>
+            </HBox>
+            <HBox spacing="8.0">
+               <children>
+                  <Label text="Nulos">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nulosLabel" />
+               </children>
+            </HBox>
+         </children>
+      </FlowPane>
+      <VBox fx:id="tabela" />
+   </children>
    <padding>
       <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
    </padding>
-   <children>
-      <HBox spacing="8.0">
-         <children>
-            <Label text="Eleição">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="eleicao" />
-         </children>
-      </HBox>
-      <HBox layoutX="26.0" layoutY="26.0" spacing="8.0">
-         <children>
-            <Label text="Tipo de consulta">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="tipoConsulta" />
-         </children>
-      </HBox>
-      <HBox layoutX="95.0" layoutY="26.0" spacing="8.0">
-         <children>
-            <Label text="Cargo">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="cargo" />
-         </children>
-      </HBox>
-      <HBox layoutX="233.0" layoutY="26.0" spacing="8.0">
-         <children>
-            <Label text="UF">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="uf" />
-         </children>
-      </HBox>
-      <HBox layoutX="292.0" layoutY="26.0" spacing="8.0">
-         <children>
-            <Label text="Município">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="municipio" />
-         </children>
-      </HBox>
-   </children>
-</FlowPane>
+</VBox>
