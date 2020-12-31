@@ -27,7 +27,7 @@ class RespostaController : Initializable {
         ordem.setCellValueFactory { SimpleStringProperty(it.value.candidatoResposta.seq) }
         resposta.setCellValueFactory { SimpleStringProperty(it.value.resposta.ds) }
         votos.setCellValueFactory {
-            SimpleStringProperty(Formato.intPorcento(it.value.candidatoResposta.vap, it.value.candidatoResposta.pvap))
+            SimpleStringProperty(Formato.longPorcento(it.value.candidatoResposta.vap, it.value.candidatoResposta.pvap))
         }
         situacao.setCellValueFactory { SimpleStringProperty(it.value.candidatoResposta.st) }
     }

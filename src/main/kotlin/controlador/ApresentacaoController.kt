@@ -124,19 +124,19 @@ class ApresentacaoController {
 
     private fun atualizarVisaoVariavel(abrangencia: AbrangenciaVariavel) {
         val porcentoEleitoresApurados = Porcento.calculo(abrangencia.ea, abrangencia.e)
-        val eleitoresNaoApurados = abrangencia.e.toInt() - abrangencia.ea.toInt()
+        val eleitoresNaoApurados = abrangencia.e.toLong() - abrangencia.ea.toLong()
         val porcentoEleitoresNaoApurados = Porcento.calculo(eleitoresNaoApurados, abrangencia.e)
-        secoesLabel.text = Formato.int(abrangencia.s)
-        secoesTotalizadasLabel.text = Formato.intPorcento(abrangencia.st, abrangencia.pst)
-        secoesNaoTotalizadasLabel.text = Formato.intPorcento(abrangencia.snt, abrangencia.psnt)
-        eleitoresLabel.text = Formato.int(abrangencia.e)
-        eleitoresApuradosLabel.text = Formato.intPorcento(abrangencia.ea, porcentoEleitoresApurados)
-        eleitoresNaoApuradosLabel.text = Formato.intPorcento(eleitoresNaoApurados, porcentoEleitoresNaoApurados)
-        comparecimentoLabel.text = Formato.intPorcento(abrangencia.c, abrangencia.pc)
-        abstencaoLabel.text = Formato.intPorcento(abrangencia.a, abrangencia.pa)
-        concorrentesLabel.text = Formato.intPorcento(abrangencia.vvc, abrangencia.pvvc)
-        brancosLabel.text = Formato.intPorcento(abrangencia.vb, abrangencia.pvb)
-        nulosLabel.text = Formato.intPorcento(abrangencia.tvn, abrangencia.ptvn)
+        secoesLabel.text = Formato.long(abrangencia.s)
+        secoesTotalizadasLabel.text = Formato.longPorcento(abrangencia.st, abrangencia.pst)
+        secoesNaoTotalizadasLabel.text = Formato.longPorcento(abrangencia.snt, abrangencia.psnt)
+        eleitoresLabel.text = Formato.long(abrangencia.e)
+        eleitoresApuradosLabel.text = Formato.longPorcento(abrangencia.ea, porcentoEleitoresApurados)
+        eleitoresNaoApuradosLabel.text = Formato.longPorcento(eleitoresNaoApurados, porcentoEleitoresNaoApurados)
+        comparecimentoLabel.text = Formato.longPorcento(abrangencia.c, abrangencia.pc)
+        abstencaoLabel.text = Formato.longPorcento(abrangencia.a, abrangencia.pa)
+        concorrentesLabel.text = Formato.longPorcento(abrangencia.vvc, abrangencia.pvvc)
+        brancosLabel.text = Formato.longPorcento(abrangencia.vb, abrangencia.pvb)
+        nulosLabel.text = Formato.longPorcento(abrangencia.tvn, abrangencia.ptvn)
     }
 
     private fun carregarCandidatoResposta(resultado: Resultado) {

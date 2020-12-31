@@ -1,6 +1,4 @@
 plugins {
-    application
-    java
     id("org.openjfx.javafxplugin") version "0.0.9"
     kotlin("jvm") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"

@@ -31,7 +31,7 @@ class CandidatoController : Initializable {
         candidato.setCellValueFactory { SimpleStringProperty(it.value.candidato.nmu) }
         partido.setCellValueFactory { SimpleStringProperty(it.value.partido) }
         votos.setCellValueFactory {
-            SimpleStringProperty(Formato.intPorcento(it.value.candidatoResposta.vap, it.value.candidatoResposta.pvap))
+            SimpleStringProperty(Formato.longPorcento(it.value.candidatoResposta.vap, it.value.candidatoResposta.pvap))
         }
         situacao.setCellValueFactory { SimpleStringProperty(it.value.candidatoResposta.st) }
     }

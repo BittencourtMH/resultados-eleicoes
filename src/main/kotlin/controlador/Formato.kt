@@ -4,28 +4,28 @@ import java.util.*
 
 class Formato {
     companion object {
-        fun int(int: Int): String {
-            return "%,d".format(Locale("pt"), int)
+        fun long(long: Long): String {
+            return "%,d".format(Locale("pt"), long)
         }
 
-        fun int(string: String): String {
-            return int(string.toInt())
+        fun long(string: String): String {
+            return long(string.toLong())
         }
 
-        fun porcento(int: Int): String {
-            return "%d,%02d%%".format(int / 100, int % 100)
+        fun porcento(long: Long): String {
+            return "%d,%02d%%".format(long / 100, long % 100)
         }
 
-        fun intPorcento(inteiro: Int, porcento: Int): String {
-            return "${int(inteiro)} (${porcento(porcento)})"
+        fun longPorcento(long: Long, porcento: Long): String {
+            return "${long(long)} (${porcento(porcento)})"
         }
 
-        fun intPorcento(inteiro: String, porcento: Int): String {
-            return intPorcento(inteiro.toInt(), porcento)
+        fun longPorcento(long: String, porcento: Long): String {
+            return longPorcento(long.toLong(), porcento)
         }
 
-        fun intPorcento(inteiro: String, porcento: String): String {
-            return intPorcento(inteiro.toInt(), Porcento.toInt(porcento))
+        fun longPorcento(long: String, porcento: String): String {
+            return longPorcento(long.toLong(), Porcento.toLong(porcento))
         }
     }
 }
